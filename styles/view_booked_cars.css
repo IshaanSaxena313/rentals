@@ -1,0 +1,43 @@
+/* Custom CSS for View Booked Cars Page */
+
+/* Center align the heading */
+.container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Style the heading for the page */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Style the individual car cards */
+.card {
+    border: 1px solid #e1e1e1;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-text {
+    margin-bottom: 10px;
+}
+
+/* Style the list group for customers */
+.list-group {
+    margin-top: 20px;
+}
+
+.list-group-item {
+    font-weight: bold;
+}
+
+/* Increase the overall padding for better spacing */
+body {
+    padding: 20px;
+}

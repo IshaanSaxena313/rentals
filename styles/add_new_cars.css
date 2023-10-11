@@ -1,0 +1,38 @@
+/* Custom CSS for Add New Cars Page */
+
+/* Center align the form */
+.container {
+    text-align: center;
+    margin-top: 10%;
+}
+
+/* Style the heading for the form */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Style the form fields and buttons */
+.form-group {
+    text-align: left;
+}
+
+.form-control {
+    margin-bottom: 20px;
+}
+
+/* Style the submit button */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Increase the overall padding for better spacing */
+body {
+    padding: 20px;
+}
