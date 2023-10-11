@@ -1,5 +1,15 @@
 <?php
     include("header.php");
+    $servername = "localhost";
+    $username = "root";
+    $password = "root";
+    $dbname = "rentals";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -34,40 +44,33 @@
     <div class="container mt-5 mb-5">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col" style="background-color: #a47272;">
-                    <p style="text-align: left; color: white;" class="mt-3">
-                        Model:
-                        <br>
-                        Number:
-                        <br>
-                        Seating Capacity:
-                        <br>
-                        Rent per day:
-                        <br>
-                    </p>
-                    <button type="button" class="btn btn-primary mt-4 mb-4"
-                        style="width: 100%; background: rgb(76, 160, 160);">RENT CAR</button>
-                </div>
-                <div class="col">
-                    <img src="images/car_ex_home.png" alt="" style="width: 120%;">
-                </div>
-                <div class="col" style="background-color: #a47272;">
-                    <p style="text-align: left; color: white;" class="mt-3">
-                        Model:
-                        <br>
-                        Number:
-                        <br>
-                        Seating Capacity:
-                        <br>
-                        Rent per day:
-                        <br>
-                    </p>
-                    <button type="button" class="btn btn-primary mt-4 mb-4"
-                        style="width: 100%; background: rgb(76, 160, 160);">RENT CAR</button>
-                </div>
-                <div class="col">
-                    <img src="images/car_ex_home.png" alt="" style="width: 120%;">
-                </div>
+                
+                    <?php
+                            $sql = "SELECT agency_id, vehicle_no, seating_capacity, rent FROM cars";
+                            $result = $conn->query($sql);
+                            if ($result->num_rows > 0) {
+                                // Step 3: Display data in cards
+                                echo '<div id="carouselExample" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">';
+                                while ($row = $result->fetch_assoc()) {
+                                        echo '<div class="card">';
+                                        echo '<div class="card-body" style="background-color: #a47272;>';
+                                        echo '<h5 class="card-title">Vehicle No: ' . $row['vehicle_no'] . '</h5>';
+                                        echo '<p class="card-text">Agency ID: ' . $row['agency_id'] . '</p>';
+                                        echo '<p class="card-text">Seating Capacity: ' . $row['seating_capacity'] . '</p>';
+                                        echo '<p class="card-text">Rent: ' . $row['rent'] . '</p>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                        echo '<img src="images/car_ex_home.png" class="d-block w-100" alt="...">';
+                                    }
+                                    echo '</div>
+                                </div>
+                                </div>';
+                            } else {
+                                echo "No cars available.";
+                            }
+                    ?>
             </div>
         </div>
     </div>

@@ -1,4 +1,5 @@
 <?php
+//session_start();
 include("header.php");
 
 if(isset($_POST['login_username'])){
@@ -29,19 +30,20 @@ if (mysqli_num_rows($result_customers) > 0) {
     echo "Welcome customer";
     // Username exists in the Customers table
     // After successful login
-    session_start();
     $_SESSION['username'] = $login_username; // Store username
     $_SESSION['logged_in'] = true; // Flag to indicate the user is logged in
     header("Location:index.php");
+    exit;
     
-} elseif (mysqli_num_rows($result_agency) > 0) {
+} else if (mysqli_num_rows($result_agency) > 0) {
+    // Username exists in the Agency table
     //echo "Welcome agency";
-    session_start();
     $_SESSION['username'] = $login_username; // Store username
     $_SESSION['logged_in'] = true; // Flag to indicate the user is logged in
     header("Location:index.php");
-    // Username exists in the Agency table
+    exit;
 } else {
+    $_SESSION['logged_in'] = false; // Flag to indicate the user is logged in
     echo "ERR no user or agency found";
     // Username not found in either table
 }
